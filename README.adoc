@@ -1,0 +1,28 @@
+An implementation of the Eat Your Greens language by Peter Saxton.
+
+EYG currently is unlicensed, but licensing is on the https://eyg.run/roadmap/[roadmap].
+
+== Information
+
+Different implementations of programming languages standardize on their syntax (the source code text), but EYG standardises on its AST.
+Lexing/parsing (aka. converting to AST) is outsourced to implementations.
+
+* https://github.com/CrowdHailer/eyg-lang/tree/main/eyg/src/eyg/parse[Reference lexer/parser (gleam)]
+* https://github.com/CrowdHailer/eyg-lang/tree/main/spec[AST reference, aka. the language]
+* https://github.com/CrowdHailer/eyg-lang/blob/main/packages/javascript_interpreter[Reference interpreter (js)]
+* https://github.com/CrowdHailer/eyg-lang/tree/main/packages/gleam_interpreter[Reference interpreter (gleam)]
+
+== Raison d'etre
+
+* https://eyg.run[Main website]
+* https://www.youtube.com/watch?v=w7mHY7CW51o[Software Unscripted Podcast]
+
+== TODO
+
+* [ ] Error reporting
+* [x] Lexing. Opted for a table-driven parser.
+* [ ] Parsing
+* [ ] Interpreter
+  * [ ] Implement managed effects
+  * [ ] Implement builtins
+  * [ ] Content hashing and references
