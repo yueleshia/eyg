@@ -1,13 +1,28 @@
 const std = @import("std");
 const lexer = @import("s1_lexer.zig");
-//const ir = @import("s2_ir.zig");
+const ir = @import("s2_ir.zig");
 
 pub fn main() !void {
+    //const asdf =
+    //    \\ let alice = {name: "Al ice"}
+    //    \\  let bob = {name: "Bob\x2D\x3e", height: 192}
+    //    \\let can = {name: "C\u{56e7}\u{00006E}", height: -1}
+    //    \\let x = !int_add(bob.height, can.height)
+    //    \\let list = [bob.name, can.name]
+    //    \\x
+    //;
     const asdf =
-        \\ let alice = {name: "Alice"}
-        \\  let bob = {name: "Bob\x2D\x3e", height: 192}
-        \\let can = {name: "C\u{56e7}\u{00006E}", height: -1}
-        \\alice.name
+        \\let items = [1, 4, 2]
+        \\let items = [10, ..items]
+        \\let bob = {name: "Bob", height: 192,}
+        \\match 1 {
+        \\  Ok (value) -> value
+        \\  Error (_) -> -1
+        \\}
+        //\\match {height: 100, ..bob} {
+        //\\  {height: h, name: b} -> {b}
+        //\\  (_) -> "wild"
+        //\\}
     ;
 
     //var lexemes = try std.ArrayList(Token).initCapacity(std.testing.allocator, asdf.len);
@@ -36,9 +51,9 @@ pub fn main() !void {
         try lexer.reconstruct(std.heap.page_allocator, asdf, list);
         break :blk list;
     };
-    _ = list;
+    //_ = list;
 
-    //_ = try ir.parse(std.heap.page_allocator, asdf, list);
+    _ = try ir.parse(std.heap.page_allocator, asdf, list);
 }
 
 test "simple test" {
